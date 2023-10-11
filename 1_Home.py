@@ -20,7 +20,7 @@ st.write('Godmorgen, *Kolding!* :sunglasses:')
 
 @st.cache_data
 def read_data():
-    df = pd.read_csv('geomu.csv')
+    df = pd.read_csv('data/mandag_ulige_merged.csv')
     return df
 
 def create_map(df):
@@ -29,7 +29,7 @@ def create_map(df):
     m = folium.Map(location=[lat_avg, lng_avg], zoom_start=17)
     for _, row in df.iterrows():
         folium.Marker(
-            [row.latitude, row.longitude], popup=row.address
+            [row.latitude, row.longitude], popup=row.gade
         ).add_to(m)
     return m
 
